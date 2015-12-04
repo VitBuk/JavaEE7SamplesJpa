@@ -1,6 +1,6 @@
 package org.javaee7.jpa.defaultdatasource;
 
-import org.javaee7.jpa.defaultdatasource.Employee;
+import org.javaee7.jpa.defaultdatasource.EmployeeDDS;
 import org.javaee7.jpa.defaultdatasource.EmployeeBean;
 import java.util.List;
 import javax.inject.Inject;
@@ -24,26 +24,26 @@ public class EmployeeBeanTest {
     @Deployment
     public static WebArchive createDeployment() {
         return ShrinkWrap.create(WebArchive.class)
-            .addClasses(Employee.class,
-                EmployeeBean.class)
-            .addAsResource("META-INF/persistence.xml")
-            .addAsResource("META-INF/load.sql");
+                .addClasses(EmployeeDDS.class,
+                        EmployeeBean.class)
+                .addAsResource("META-INF/persistence.xml")
+                .addAsResource("META-INF/load.sql");
     }
 
     @Test
     public void testGet() throws Exception {
         assertNotNull(bean);
-        List<Employee> list = bean.get();
+        List<EmployeeDDS> list = bean.get();
         assertNotNull(list);
         assertEquals(8, list.size());
-        assertFalse(list.contains(new Employee("Penny")));
-        assertFalse(list.contains(new Employee("Sheldon")));
-        assertFalse(list.contains(new Employee("Amy")));
-        assertFalse(list.contains(new Employee("Leonard")));
-        assertFalse(list.contains(new Employee("Bernadette")));
-        assertFalse(list.contains(new Employee("Raj")));
-        assertFalse(list.contains(new Employee("Howard")));
-        assertFalse(list.contains(new Employee("Priya")));
+        assertFalse(list.contains(new EmployeeDDS("Penny")));
+        assertFalse(list.contains(new EmployeeDDS("Sheldon")));
+        assertFalse(list.contains(new EmployeeDDS("Amy")));
+        assertFalse(list.contains(new EmployeeDDS("Leonard")));
+        assertFalse(list.contains(new EmployeeDDS("Bernadette")));
+        assertFalse(list.contains(new EmployeeDDS("Raj")));
+        assertFalse(list.contains(new EmployeeDDS("Howard")));
+        assertFalse(list.contains(new EmployeeDDS("Priya")));
     }
 
 }

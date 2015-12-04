@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(name = "Employee.findAll", query = "SELECT e FROM Employee e")
 })
-public class Employee implements Serializable {
+public class EmployeeDDS implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,10 +27,10 @@ public class Employee implements Serializable {
     @Column(length = 40)
     private String name;
 
-    public Employee() {
+    public EmployeeDDS() {
     }
 
-    public Employee(String name) {
+    public EmployeeDDS(String name) {
         this.name = name;
     }
 
