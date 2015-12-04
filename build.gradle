@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+if (!hasProperty('mainClass')) {
+    ext.mainClass = ''
+}
+
+repositories {
+    mavenCentral()
+
+}
+
+dependencies {
+
+    providedCompile 'javax:javaee-api:7.0'
+    providedCompile 'org.eclipse.persistence:eclipselink:2.5.1'
+    //compile 'javax:javaee-api:7.0'
+    compile 'com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.5.1'
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0'
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    compile 'ch.qos.logback:logback-classic:1.1.2'
+    compile 'ch.qos.logback:logback-core:1.1.2'
+
+
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.hamcrest:hamcrest-core:1.3'
+    testCompile 'org.hamcrest:hamcrest-library:1.3'
+    testCompile 'org.assertj:assertj-core:1.5.0'
+    testCompile 'org.jboss.arquillian.junit:arquillian-junit-container:1.1.1.Final'
+    testCompile 'org.jboss.arquillian.protocol:arquillian-protocol-servlet:1.1.1.Final'
+}
+
